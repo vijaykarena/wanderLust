@@ -20,6 +20,7 @@
         <p class="card-text"><%= listing.country %></p>
       </div>
       <br />
+      <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
       <div class="btns">
         <a
           href="/listings/<%= listing._id %>/edit"
@@ -33,6 +34,7 @@
           <button class="btn btn-dark offset-2">Delete</button>
         </form>
       </div>
+      <% } %>
       <div>
         <hr />
         <h4>Leave a Review</h4>
