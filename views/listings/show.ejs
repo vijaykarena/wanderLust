@@ -34,7 +34,7 @@
           <button class="btn btn-dark offset-2">Delete</button>
         </form>
       </div>
-      <% } %>
+      <% } %> <% if(currUser){ %>
       <div>
         <hr />
         <h4>Leave a Review</h4>
@@ -72,6 +72,7 @@
           <button class="btn btn-outline-dark">Submit</button>
         </form>
       </div>
+      <% } %>
       <hr />
       <div>
         <p><b>All Reviews</b></p>
@@ -79,7 +80,7 @@
           <% for(review of listing.reviews){ %>
           <div class="card col-5 ms-3 mb-3">
             <div class="card-body">
-              <h5 class="card-title">Jone Doe</h5>
+              <h5 class="card-title">@<%= review.author.username %></h5>
               <p class="card-text"><%= review.comment %></p>
               <p class="card-text"><%= review.rating %> stars</p>
             </div>
