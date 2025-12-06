@@ -28,6 +28,12 @@
           >
           <div class="invalid-feedback">Please enter a short description</div>
         </div>
+
+        <div class="mb-3">
+          Original Lising Image <br />
+          <img src="<%= originalImageUrl %>" alt="img" />
+        </div>
+
         <div class="mb-3">
           <label for="image" class="form-lable">Upload New Image</label>
           <input name="listing[image]" type="file" class="form-control" />
@@ -65,7 +71,7 @@
           />
           <div class="invalid-feedback">Location should be valid</div>
         </div>
-        <button class="btn btn-dark edit-btn mt-3">Edit</button>
+        <button class="btn btn-dark edit-btn my-3">Edit</button>
       </form>
     </div>
   </div>
