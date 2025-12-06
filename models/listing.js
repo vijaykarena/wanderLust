@@ -8,14 +8,18 @@ const listingSchema = new Schema({
     required: true,
   },
   description: String,
+  // image: {
+  //   type: String,
+  //   default:
+  //     "https://cdn.pixabay.com/photo/2024/07/12/22/26/ai-generated-8891135_1280.png",
+  //   set: (v) =>
+  //     v === ""
+  //       ? "https://cdn.pixabay.com/photo/2024/07/12/22/26/ai-generated-8891135_1280.png"
+  //       : v,
+  // },
   image: {
-    type: String,
-    default:
-      "https://cdn.pixabay.com/photo/2024/07/12/22/26/ai-generated-8891135_1280.png",
-    set: (v) =>
-      v === ""
-        ? "https://cdn.pixabay.com/photo/2024/07/12/22/26/ai-generated-8891135_1280.png"
-        : v,
+    url: String,
+    filename: String,
   },
   price: Number,
   location: String,
