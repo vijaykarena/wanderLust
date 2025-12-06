@@ -13,8 +13,8 @@ router
   .get(wrapAsync(listingController.index)) // Index Route
   .post(
     isLoggedIn,
-    validateListing,
     upload.single("listing[image]"),
+    validateListing,
     wrapAsync(listingController.createListing)
   ); // Create Route
 
@@ -27,6 +27,7 @@ router
   .put(
     isLoggedIn,
     isOwner,
+    upload.single("listing[image]"),
     validateListing,
     wrapAsync(listingController.updateListing)
   ) // Update Route
