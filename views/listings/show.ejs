@@ -1,5 +1,8 @@
 <% layout('/layouts/boilerplate') -%>
 <body>
+  <script>
+    const listing = <%- JSON.stringify(listing) %>;
+  </script>
   <div class="row mt-3">
     <div class="col-8 offset-3">
       <h3><%= listing.title %></h3>
@@ -137,6 +140,7 @@
           <% } %>
         </div>
       </div>
+      <hr />
       <% }%>
       <div>
         <h3>Where You'all be</h3>

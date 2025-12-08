@@ -118,6 +118,11 @@ body {
   padding-right: 0;
 }
 
-
 /* Map */
-#map { height: 400px; }
+#map {
+  height: 400px;
+}
+
+.custom-marker {
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
