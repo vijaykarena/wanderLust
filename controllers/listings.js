@@ -23,13 +23,31 @@ module.exports.showListings = async (req, res) => {
 };
 
 module.exports.createListing = async (req, res, next) => {
+  const response = await fetch(
+    `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(
+      req.body.listing.location
+    )}`,
+    {
+      headers: { "User-Agent": "my-wanderlust-app" },
+    }
+  );
+  const data = await response.json();
+
+  const lat = parseFloat(data[0].lat);
+  const lon = parseFloat(data[0].lon);
+
   let url = req.file.path;
   let filename = req.file.filename;
 
   // let {title, description, image, price, country, location } = req.body;
+
   let newListing = new Listing(req.body.listing);
   newListing.owner = req.user._id;
   newListing.image = { url, filename };
+  newListing.geometry = {
+    type: "Point",
+    coordinates: [lon, lat],
+  };
   await newListing.save();
   req.flash("success", "New Listing Created!");
   res.redirect("/listings");
