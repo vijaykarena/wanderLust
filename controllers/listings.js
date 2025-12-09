@@ -1,7 +1,19 @@
 const Listing = require("../models/listing");
 
 module.exports.index = async (req, res) => {
-  const allListings = await Listing.find({});
+  let allListings;
+  let { category, search } = req.query;
+
+  if (category) {
+    allListings = await Listing.find({ category: { $eq: category } });
+  } else if (search) {
+    allListings = await Listing.find({
+      location: { $regex: search, $options: "i" },
+    });
+  } else {
+    allListings = await Listing.find({});
+  }
+
   res.render("listings/index.ejs", { allListings });
 };
 
@@ -89,10 +101,16 @@ module.exports.destroyListing = async (req, res) => {
   res.redirect("/listings");
 };
 
-module.exports.searchListings = async (req, res) => {
-  let { search } = req.query;
-  const allListings = await Listing.find({
-    location: { $regex: search, $options: "i" },
-  });
-  res.render("listings/index.ejs", { allListings });
-};
+// module.exports.searchListings = async (req, res) => {
+//   let { search } = req.query;
+//   const allListings = await Listing.find({
+//     location: { $regex: search, $options: "i" },
+//   });
+//   res.render("listings/index.ejs", { allListings });
+// };
+
+// module.exports.filterListings = async (req, res) => {
+//   let { category } = req.query;
+//   const allListings = await Listing.find({ category: { $eq: category } });
+//   res.render("listings/index.ejs", { allListings });
+// };
