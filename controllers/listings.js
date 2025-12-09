@@ -88,3 +88,11 @@ module.exports.destroyListing = async (req, res) => {
   req.flash("success", "Listing Deleted!");
   res.redirect("/listings");
 };
+
+module.exports.searchListings = async (req, res) => {
+  let { search } = req.query;
+  const allListings = await Listing.find({
+    location: { $regex: search, $options: "i" },
+  });
+  res.render("listings/index.ejs", { allListings });
+};
