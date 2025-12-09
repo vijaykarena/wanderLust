@@ -24,6 +24,28 @@ body {
   color: #222222 !important;
 }
 
+.search-btn {
+  background-color: #fe424d;
+  color: #fff;
+  border-radius: 20px;
+  padding: 0 1rem;
+}
+
+.search-btn:hover {
+  background-color: #fe424d;
+  color: #fff;
+}
+
+.search-btn i {
+  display: inline;
+  margin-right: 0.5rem;
+}
+
+.search-input {
+  border-radius: 20px;
+  padding: 0.5rem 2rem 0.5rem 2rem;
+}
+
 /* Footer */
 .f-info-links a {
   text-decoration: none;
@@ -125,4 +147,35 @@ body {
 
 .custom-marker {
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Filters */
+.filter {
+  text-align: center;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  opacity: 0.8;
+}
+
+.filter:hover {
+  opacity: 1;
+}
+
+.filter p {
+  font-size: 0.9rem;
+}
+
+.filter-container {
+  padding: 0px;
+}
+
+.tax-info {
+  display: none;
+}
+
+.tax-toggle {
+  border: 1px solid gray;
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 180px;
 }

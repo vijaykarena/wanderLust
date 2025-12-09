@@ -1,6 +1,37 @@
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+<!-- <style>
+  .navbar-blur {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  /* make the expanded mobile menu also blurred */
+  .navbar-blur .navbar-collapse {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* on small screens, let the collapse overlay the content nicely */
+  @media (max-width: 767.98px) {
+    .navbar-blur .navbar-collapse {
+      position: absolute;
+      top: 100%; /* right under the top bar */
+      left: 0;
+      right: 0;
+      padding: 0.75rem 1rem 1rem;
+      z-index: 1000;
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+    }
+  }
+</style> -->
+<nav class="navbar navbar-expand-md border-bottom sticky-top navbar-blur">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"><i class="fa-regular fa-compass"></i></a>
+    <a class="navbar-brand" href="/listings">
+      <i class="fa-regular fa-compass"></i>
+    </a>
     <button
       class="navbar-toggler"
       type="button"
@@ -11,16 +42,27 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/listings">All Listings</a>
-        <a class="nav-link" href="/listings/new">Add new Listing</a>
+        <a class="nav-link" href="/listings">Explore</a>
       </div>
       <div class="navbar-nav ms-auto">
+        <form class="d-flex" role="search">
+          <input
+            class="form-control me-2 search-input"
+            type="search"
+            placeholder="Search destinations"
+          />
+          <button class="btn search-btn" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>Search
+          </button>
+        </form>
+      </div>
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/listings/new">Add new Listing</a>
         <% if(!currUser){ %>
-        <a class="nav-link" href="/signup">Sign up</a>
-        <a class="nav-link" href="/login">Log in</a>
+        <a class="nav-link" href="/signup"><b>Sign up</b></a>
+        <a class="nav-link" href="/login"><b>Log in</b></a>
         <% } %> <% if(currUser){ %>
-        <a class="nav-link" href="/logout">Log out</a>
+        <a class="nav-link" href="/logout"><b>Log out</b></a>
         <% } %>
       </div>
     </div>
