@@ -1,4 +1,4 @@
-if(process.env.NODE_ENV != "production"){
+if (process.env.NODE_ENV != "production") {
   require("dotenv").config();
 }
 
@@ -47,10 +47,6 @@ async function main() {
   await mongoose.connect(MONGO_URL);
 }
 
-// app.get("/", (req, res) => {
-//   res.send("Hi, i am root");
-// });
-
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -86,6 +82,10 @@ const userRouter = require("./routes/user.js");
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
+
+app.get("/", (req, res) => {
+  res.render("home.ejs");
+});
 
 app.use((req, res, next) => {
   next(new ExpressError(404, "Page Not Found!"));

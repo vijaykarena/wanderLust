@@ -80,6 +80,24 @@ body {
   align-items: space-evenly;
 }
 
+/* Home page */
+.main-div {
+  min-height: calc(100vh - 208px);
+}
+
+.start-btn {
+  background-color: #fe424d;
+  color: #fff;
+  border-radius: 24px;
+  font-size: 1rem;
+  padding: 1rem;
+}
+
+.start-btn:hover {
+  background-color: #fe424d;
+  color: #fff;
+}
+
 /* Cards */
 .listing-card {
   border: none !important;

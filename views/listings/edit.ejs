@@ -34,9 +34,35 @@
           <img src="<%= originalImageUrl %>" alt="img" />
         </div>
 
-        <div class="mb-3">
-          <label for="image" class="form-lable">Upload New Image</label>
-          <input name="listing[image]" type="file" class="form-control" />
+        <div class="row">
+          <div class="col-md-8">
+            <div class="mb-3">
+              <label for="image" class="form-lable">Upload New Image</label>
+              <input name="listing[image]" type="file" class="form-control" />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="mb-3">
+              <label for="category" class="form-lable">Select category</label>
+              <select
+                class="form-select"
+                id="category"
+                name="listing[category]"
+                required
+                data-selected="<%= listing.category %>"
+              >
+                <option value="rooms" <%= listing.category === "rooms" ? "selected" : "" %>>rooms</option>
+                <option value="mountains" <%= listing.category === "mountains" ? "selected" : "" %>>mountains</option>
+                <option value="castles" <%= listing.category === "castles" ? "selected" : "" %>>castles</option>
+                <option value="camping" <%= listing.category === "camping" ? "selected" : "" %>>camping</option>
+                <option value="farms" <%= listing.category === "farms" ? "selected" : "" %>>farms</option>
+                <option value="arctic" <%= listing.category === "arctic" ? "selected" : "" %>>arctic</option>
+                <option value="domes" <%= listing.category === "domes" ? "selected" : "" %>>domes</option>
+                <option value="boats" <%= listing.category === "boats" ? "selected" : "" %>>boats</option>
+              </select>
+              <div class="invalid-feedback">Select appropriate Category</div>
+            </div>
+          </div>
         </div>
         <div class="row">
           <div class="mb-3 col-md-4">

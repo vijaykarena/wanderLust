@@ -1,5 +1,3 @@
-console.log(listing.geometry.coordinates);
-
 // Initialize map
 let coordinates = listing.geometry.coordinates;
 const map = L.map("map").setView([coordinates[1], coordinates[0]], 13); // [lat, lon]
