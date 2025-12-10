@@ -40,7 +40,7 @@ module.exports.createListing = async (req, res, next) => {
       req.body.listing.location
     )}`,
     {
-      headers: { "User-Agent": "my-wanderlust-app" },
+      headers: { "User-Agent": "my-wandernest-app" },
     }
   );
   const data = await response.json();
