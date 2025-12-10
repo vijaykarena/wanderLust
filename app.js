@@ -37,14 +37,15 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(methodOverride("_method"));
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/wandernest";
+// const MONGO_URL = "mongodb://127.0.0.1:27017/wandernest";
+const dbUrl = process.env.ATLASDB_URL;
 
 main()
   .then(() => console.log("connected to DB"))
   .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect(MONGO_URL);
+  await mongoose.connect(dbUrl);
 }
 
 app.use(session(sessionOptions));
