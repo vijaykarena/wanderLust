@@ -79,6 +79,24 @@ module.exports.renderEditForm = async (req, res) => {
 
 module.exports.updateListing = async (req, res) => {
   let { id } = req.params;
+
+  const response = await fetch(
+    `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(
+      req.body.listing.location
+    )}`,
+    {
+      headers: { "User-Agent": "my-wandernest-app" },
+    }
+  );
+  const data = await response.json();
+
+  const lat = parseFloat(data[0].lat);
+  const lon = parseFloat(data[0].lon);
+  req.body.listing.geometry = {
+    type: "Point",
+    coordinates: [lon, lat],
+  };
+
   let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
 
   if (typeof req.file !== "undefined") {
